@@ -56,6 +56,7 @@ public class GridPaneClass extends Application {
         grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, loginButton);
 
         Scene scene =  new Scene(grid, 300, 200);
+        scene.getStylesheets().add("style.css");
         window.setScene(scene);
 
         window.show();
