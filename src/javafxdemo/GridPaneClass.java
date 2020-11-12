@@ -53,7 +53,15 @@ public class GridPaneClass extends Application {
             System.out.println("Password: " + passInput.getText());
         });
 
-        grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, loginButton);
+        //Sign up button
+        Button signupButton = new Button("Sign Up");
+        GridPane.setConstraints(signupButton, 1, 3);
+
+        //Class set up
+        loginButton.getStyleClass().add("red-button");
+        signupButton.getStyleClass().add("red-button");
+
+        grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, loginButton, signupButton);
 
         Scene scene =  new Scene(grid, 300, 200);
         scene.getStylesheets().add("style.css");

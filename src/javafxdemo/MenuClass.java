@@ -2,10 +2,7 @@ package javafxdemo;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -24,6 +21,30 @@ public class MenuClass extends Application {
 
         //File menu
         Menu fileMenu = new Menu("File");
+        Menu helpMenu = new Menu("Help");
+        CheckMenuItem showLines = new CheckMenuItem("Show Line Numbers");
+        showLines.setOnAction(e -> {
+            if (showLines.isSelected()) {
+                System.out.println("Program will now display line numbers");
+            } else {
+                System.out.println("Program will now hide line numbers");
+            }
+        });
+        helpMenu.getItems().addAll(showLines);
+
+        Menu difficultyMenu = new Menu("Difficulty");
+        ToggleGroup difficultyToggle = new ToggleGroup();
+
+        RadioMenuItem easyRadio = new RadioMenuItem("Easy");
+        RadioMenuItem mediumRadio = new RadioMenuItem("Medium");
+        RadioMenuItem hardRadio = new RadioMenuItem("Hard");
+
+        easyRadio.setToggleGroup(difficultyToggle);
+        mediumRadio.setToggleGroup(difficultyToggle);
+        hardRadio.setToggleGroup(difficultyToggle);
+
+        difficultyMenu.getItems().addAll(easyRadio, mediumRadio, hardRadio);
+
 
         //Menu items
         MenuItem newFile = new MenuItem("New Project...");
@@ -42,7 +63,7 @@ public class MenuClass extends Application {
 
         //Main menu bar
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(fileMenu);
+        menuBar.getMenus().addAll(fileMenu, helpMenu, difficultyMenu);
 
         layout = new BorderPane();
         layout.setTop(menuBar);
